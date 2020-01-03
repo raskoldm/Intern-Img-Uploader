@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Intern img uploader</title>
 </head>
 <body>
-    hello im a new and better version of img uploader!
+    <script src="uploader.js"></script>
+
+    <div class="wrapper" >
+        <div class="upload-container" id="drop-area" >
+          <h1>Drop files enywhere to upload</h1>
+          <p>or</p>
+  
+          <input type="file" id="inpFile" multiple >
+          <p>Maximum upload file size 32Mb</p>
+  
+          <div class="progressbar" id="myProgress">
+            <div id="myBar">
+              <div id="label">10%</div>
+            </div>
+          </div>
+          <button onclick="barMove()">Click</button>
+      </div>
+      
+      <div class="files-section" id="files-section">
+        <li class="file-container" id="file-container"><img src="" alt="" id="img"></li>
+        <li class="file-container"></li>
+        <li class="file-container"></li>
+        <li class="file-container"></li>
+      </div>
+    </div>
+      
 </body>
 </html>

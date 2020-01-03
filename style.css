@@ -1,0 +1,87 @@
+html, body{
+    font-family: Arial, Helvetica, sans-serif;
+  } 
+  
+  h1{
+    margin-top:25px;
+    font-size: 20pt;
+    color: black;
+  }
+  
+  p{
+    font-size:12pt;
+    color:#ccc;
+  }
+  
+  .wrapper{
+    width:720px;
+    height:500px;
+    margin:30px auto 0 auto;
+  }
+  
+  .upload-container{
+    margin:10px 10px 20px 10px;
+    width:96%;
+    height:230px;
+    border: 2px dashed #ccc;
+    text-align: center;
+  }
+  
+  .highlight{
+    border: 2px dashed rgb(255, 128, 128);
+  }
+  
+  
+  /* Progress bar */
+  
+  .progressbar{
+    position: relative;
+    margin: 0 auto; 
+    width:300px;
+    height:30px;
+    background-color: rgb(75, 75, 75);
+  }
+  
+  #myBar{
+    position:absolute;
+    width:10%;
+    height:100%;
+    background-color:black;
+  }
+  
+  #label{
+    margin-top:6px;
+    color:white;
+  }
+  
+  /* Files section */
+  
+  .files-section{ 
+    width:100%;
+    height:200px;
+    background-color: rgb(221, 221, 221);
+  }
+  
+  /* .files-section li{
+    
+  }  */
+  
+  .file-container{
+    display: inline-block;
+    border:2px solid rgb(146, 146, 146);
+    list-style: none;
+    width: 122px;
+    height: 122px;
+    margin: 15px;
+    padding:10px;
+  }
+  
+  .file-container img{
+    width:100%;
+  }
+  
+  img{
+    width:100px;
+    height:100px;
+  }
+  
