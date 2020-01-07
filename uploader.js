@@ -66,7 +66,7 @@ window.onload = function(){
     function previewFile(file, index) {
         
         console.log(file)
-        console.log(file.length)
+       
         let reader = new FileReader()  
         reader.onloadend = function(e) {
               let fileContainer = document.getElementsByClassName('file-container')
@@ -76,8 +76,15 @@ window.onload = function(){
               img[index].setAttribute('display', 'block');
               console.log(img[index])
 
-              barMove();
             }
+
+
+        function handleWidth(width, oneUpload){
+          width = width  + oneUpload;
+          console.log(width);
+
+          barMove(width,oneUpload);
+        }
         
         reader.readAsDataURL(file)                 
       }
@@ -103,9 +110,8 @@ window.onload = function(){
       }
     } 
 
+    
     // Drag images
-
-
 
 
 
