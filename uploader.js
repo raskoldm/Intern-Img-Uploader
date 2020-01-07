@@ -57,33 +57,31 @@ window.onload = function(){
     function handleFiles(files) {   
       console.log(files)                            //filelist
        for(let i = 0; i < files.length; i++) {
-            
-           previewFile(files[i])
-           console.log(files[i])
+          previewFile(files[i],i)
        }
     }   
 
     //Read file
 
-    function previewFile(file) {
-        let reader = new FileReader()
+    function previewFile(file, index) {
         
-        
+        console.log(file)
+        console.log(file.length)
+        let reader = new FileReader()  
         reader.onloadend = function(e) {
               let fileContainer = document.getElementsByClassName('file-container')
-              for(i = 0; i < fileContainer.length; i++){
               let img = document.getElementsByClassName('img-container')
-              let src = img[i].getAttribute('src');
-              img[i].src = reader.result;
-              img[i].setAttribute('display', 'block');
-              console.log(img)
+              let src = img[index].getAttribute('src');
+              img[index].src = reader.result;
+              img[index].setAttribute('display', 'block');
+              console.log(img[index])
 
               barMove();
             }
-        }
-        reader.readAsDataURL(file)                  // i is not defined
+        
+        reader.readAsDataURL(file)                 
       }
-
+      
 
     //Progress bar
 
@@ -91,7 +89,7 @@ window.onload = function(){
       var elem = document.getElementById('myBar');
       width = 0;
       var id =setInterval(frame,30);
-      oneUpload = 40;
+      oneUpload = 25;
       function frame(){
           if (width >= oneUpload) {
               clearInterval(id);
@@ -106,6 +104,7 @@ window.onload = function(){
     } 
 
     // Drag images
+
 
 
 
