@@ -58,45 +58,38 @@ window.onload = function(){
       console.log(files)                            //filelist
        for(let i = 0; i < files.length; i++) {
           previewFile(files[i],i)
+          handleWidth()
        }
     }   
 
     //Read file
 
     function previewFile(file, index) {
-        
         console.log(file)
-       
         let reader = new FileReader()  
         reader.onloadend = function(e) {
-              let fileContainer = document.getElementsByClassName('file-container')
               let img = document.getElementsByClassName('img-container')
               let src = img[index].getAttribute('src');
               img[index].src = reader.result;
               img[index].setAttribute('display', 'block');
               console.log(img[index])
-
+              
             }
-
-
-        function handleWidth(width, oneUpload){
-          width = width  + oneUpload;
-          console.log(width);
-
-          barMove(width,oneUpload);
-        }
         
         reader.readAsDataURL(file)                 
       }
       
 
     //Progress bar
+   
+    function handleWidth(){
+        oneUpload = 25;      
+        barMove(0 , oneUpload);
+      }
 
     function barMove(width, oneUpload){
       var elem = document.getElementById('myBar');
-      width = 0;
       var id =setInterval(frame,30);
-      oneUpload = 25;
       function frame(){
           if (width >= oneUpload) {
               clearInterval(id);
