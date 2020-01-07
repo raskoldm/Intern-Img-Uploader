@@ -14,7 +14,7 @@ window.onload = function(){
         e.stopPropagation()
     }
 
-    //add anf remove highlight
+    //add and remove highlight
     
     ;['dragenter', 'dragover'].forEach(eventName => {
         dropArea.addEventListener(eventName, highlight, false)
@@ -40,7 +40,7 @@ window.onload = function(){
       console.log(e)
       let dt = e.dataTransfer
       let files = dt.files
-  
+      
       handleFiles(files)
     }
 
@@ -55,8 +55,9 @@ window.onload = function(){
     }
 
     function handleFiles(files) {   
+      console.log(files)                            //filelist
        for(let i = 0; i < files.length; i++) {
-   
+            
            previewFile(files[i])
            console.log(files[i])
        }
@@ -64,4 +65,51 @@ window.onload = function(){
 
     //Read file
 
+    function previewFile(file) {
+        let reader = new FileReader()
+        
+        
+        reader.onloadend = function(e) {
+              let fileContainer = document.getElementsByClassName('file-container')
+              for(i = 0; i < fileContainer.length; i++){
+              let img = document.getElementsByClassName('img-container')
+              let src = img[i].getAttribute('src');
+              img[i].src = reader.result;
+              img[i].setAttribute('display', 'block');
+              console.log(img)
+
+              barMove();
+            }
+        }
+        reader.readAsDataURL(file)                  // i is not defined
+      }
+
+
+    //Progress bar
+
+    function barMove(width, oneUpload){
+      var elem = document.getElementById('myBar');
+      width = 0;
+      var id =setInterval(frame,30);
+      oneUpload = 40;
+      function frame(){
+          if (width >= oneUpload) {
+              clearInterval(id);
+              width = width + oneUpload;     
+          }
+          else{    
+              width++;
+              elem.style.width = width + '%';
+              document.getElementById("label").innerHTML = width*1 + '%';
+          }
+      }
+    } 
+
+    // Drag images
+
+
+
+
 }
+
+
