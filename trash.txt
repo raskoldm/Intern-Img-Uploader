@@ -1,0 +1,14 @@
+    // function barMove(width, oneUpload){
+    //   var elem = document.getElementById('myBar');
+    //   var id =setInterval(frame,25);
+    //   function frame(){
+    //       if (width >= 100) {
+    //           clearInterval(id);      
+    //       }
+    //       else{    
+    //           width + oneUpload;
+    //           elem.style.width = width + '%';
+    //           document.getElementById("label").innerHTML = width*1 + '%';
+    //       }
+    //   }
+    // } 

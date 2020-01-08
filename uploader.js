@@ -58,13 +58,14 @@ window.onload = function(){
       console.log(files)                                      //filelist
        for(let i = 0; i < files.length; i++) {
           previewFile(files[i],i)
+          
           let widthSum = parseInt((document.getElementById('myBar').style.width));
+          
           if (isNaN(widthSum)) { widthSum = 0 }
-          
+         
           console.log(widthSum)
-          let oneUpload = 25;
-          handleWidth(widthSum, oneUpload)
-          
+          let oneUpload = 100/4;
+          handleWidth(widthSum, oneUpload)  
        }
     }   
 
@@ -93,7 +94,7 @@ window.onload = function(){
         let moveBar  = document.getElementById('myBar');
         if (width >= 100){
           alert('oops you load too much files man!');
-          
+          console.log('ooooops')
         }
         else{
           moveBar.style.width = width     //width + oneUpload;
@@ -102,24 +103,29 @@ window.onload = function(){
         }
       }
    
-    // function barMove(width, oneUpload){
-    //   var elem = document.getElementById('myBar');
-    //   var id =setInterval(frame,25);
-    //   function frame(){
-    //       if (width >= 100) {
-    //           clearInterval(id);      
-    //       }
-    //       else{    
-    //           width + oneUpload;
-    //           elem.style.width = width + '%';
-    //           document.getElementById("label").innerHTML = width*1 + '%';
-    //       }
-    //   }
-    // } 
+
 
     // Drag images
 
+      let dropContainer = document.getElementById('drop-conrainer')
+      console.log(dropContainer)
+      let dragable = document.getElementById('drag-item')
 
+      dropContainer.addEventListener('dragenter', function(event){
+        this.style.borderColor = "red";
+      })
+
+      dropContainer.addEventListener('dragleave', function(event){
+        this.style.borderColor = 'grey';
+      })
+
+      dropContainer.addEventListener('dragover', function(event){
+          event.preventDefault();
+      })
+
+      dropContainer.addEventListener('drop', function(event){
+        this.appendChild(dragable);
+      })
 
 }
 
