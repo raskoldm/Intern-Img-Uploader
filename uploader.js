@@ -92,15 +92,15 @@ window.onload = function(){
       function handleWidth(width, oneUpload){ 
         width = width + oneUpload + '%';
         let moveBar  = document.getElementById('myBar');
-        if (width >= 100){
-          alert('oops you load too much files man!');
-          console.log('ooooops')
-        }
-        else{
-          moveBar.style.width = width     //width + oneUpload;
-          console.log(moveBar.style.width)
-          document.getElementById('label').innerHTML = width;
-        }
+          if (width <= 100){
+          
+            console.log('ooooops')
+          }
+          else{
+            moveBar.style.width = width     //width + oneUpload;
+            console.log(moveBar.style.width)
+            document.getElementById('label').innerHTML = width;
+          }
       }
    
 
@@ -125,6 +125,7 @@ window.onload = function(){
 
       dropContainer.addEventListener('drop', function(event){
         this.appendChild(dragable);
+        console.log(dragable)
       })
 
 }
