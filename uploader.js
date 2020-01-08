@@ -57,21 +57,15 @@ window.onload = function(){
     function handleFiles(files) {   
       console.log(files)                                      //filelist
        for(let i = 0; i < files.length; i++) {
-          previewFile(files[i],i)
+          let oneUpload = 100/files.length;
+          previewFile(files[i],i,oneUpload)
           
-          let widthSum = parseInt((document.getElementById('myBar').style.width));
-          
-          if (isNaN(widthSum)) { widthSum = 0 }
-         
-          console.log(widthSum)
-          let oneUpload = 100/8;
-          handleWidth(widthSum, oneUpload)  
        }
     }   
 
     //Read file
 
-    function previewFile(file, index) {
+    function previewFile(file, index, oneUpload) {
         console.log(file)
         
         let reader = new FileReader()  
@@ -80,7 +74,14 @@ window.onload = function(){
               let src = img[index].getAttribute('src');
               img[index].src = reader.result;
               img[index].setAttribute('display', 'block');
+              let widthSum = parseInt((document.getElementById('myBar').style.width));
+                if (isNaN(widthSum)) { widthSum = 0 }
+         
+              console.log(widthSum)
+              
+              handleWidth(widthSum, oneUpload)  
               console.log(img[index])
+              console.log('UPLOAD image');
             }
             //barMove(10 , 30);    
         reader.readAsDataURL(file)                 
@@ -101,11 +102,20 @@ window.onload = function(){
             console.log(moveBar.style.width)
             document.getElementById('label').innerHTML = width;
           }
+
+          console.log('change width')
       }
    
 
 
     // Drag images
+      // let dropListContainer = document.getElementsByClassName('file-container')
+      // console.log(dropListContainer)
+
+      // dropListContainer.forEach(addEventListener('dragenter', function(event){
+      //   this.style.borderColor = "red";
+      // }))
+      // Object.addEventListener
 
       let dropContainer = document.getElementById('drop-conrainer')
       console.log(dropContainer)
