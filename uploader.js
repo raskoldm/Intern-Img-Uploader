@@ -91,8 +91,15 @@ window.onload = function(){
       function handleWidth(width, oneUpload){ 
         width = width + oneUpload + '%';
         let moveBar  = document.getElementById('myBar');
-        moveBar.style.width = width     //width + oneUpload;
-        console.log(moveBar.style.width)
+        if (width >= 100){
+          alert('oops you load too much files man!');
+          
+        }
+        else{
+          moveBar.style.width = width     //width + oneUpload;
+          console.log(moveBar.style.width)
+          document.getElementById('label').innerHTML = width;
+        }
       }
    
     // function barMove(width, oneUpload){
