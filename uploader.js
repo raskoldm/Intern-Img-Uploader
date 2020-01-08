@@ -64,7 +64,7 @@ window.onload = function(){
           if (isNaN(widthSum)) { widthSum = 0 }
          
           console.log(widthSum)
-          let oneUpload = 100/4;
+          let oneUpload = 100/8;
           handleWidth(widthSum, oneUpload)  
        }
     }   
@@ -124,6 +124,10 @@ window.onload = function(){
       })
 
       dropContainer.addEventListener('drop', function(event){
+        console.log(dropContainer)
+        if(dropContainer.contains(dragable)){
+          this.removeChild(dragable)
+        }
         this.appendChild(dragable);
         console.log(dragable)
       })
