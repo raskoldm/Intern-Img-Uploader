@@ -58,11 +58,11 @@ window.onload = function(){
       console.log(files)                                      //filelist
        for(let i = 0; i < files.length; i++) {
           previewFile(files[i],i)
-          let widthSum = (document.getElementById('myBar').style.width);
+          let widthSum = parseInt((document.getElementById('myBar').style.width));
+          if (isNaN(widthSum)) { widthSum = 0 }
+          
           console.log(widthSum)
-                            // const parsed = parseInt(x, base);
-                            // if (isNaN(parsed)) { return 0 }
-          let oneUpload = 25 + '%';
+          let oneUpload = 25;
           handleWidth(widthSum, oneUpload)
           
        }
@@ -87,9 +87,9 @@ window.onload = function(){
 
 
     //Progress bar   //
+
       function handleWidth(width, oneUpload){ 
-        
-        width = width + oneUpload;
+        width = width + oneUpload + '%';
         let moveBar  = document.getElementById('myBar');
         moveBar.style.width = width     //width + oneUpload;
         console.log(moveBar.style.width)
