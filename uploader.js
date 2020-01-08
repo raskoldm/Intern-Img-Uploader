@@ -55,10 +55,16 @@ window.onload = function(){
     }
 
     function handleFiles(files) {   
-      console.log(files)                            //filelist
+      console.log(files)                                      //filelist
        for(let i = 0; i < files.length; i++) {
           previewFile(files[i],i)
-          handleWidth()
+          let widthSum = (document.getElementById('myBar').style.width);
+          console.log(widthSum)
+                            // const parsed = parseInt(x, base);
+                            // if (isNaN(parsed)) { return 0 }
+          let oneUpload = 25 + '%';
+          handleWidth(widthSum, oneUpload)
+          
        }
     }   
 
@@ -66,6 +72,7 @@ window.onload = function(){
 
     function previewFile(file, index) {
         console.log(file)
+        
         let reader = new FileReader()  
         reader.onloadend = function(e) {
               let img = document.getElementsByClassName('img-container')
@@ -73,37 +80,36 @@ window.onload = function(){
               img[index].src = reader.result;
               img[index].setAttribute('display', 'block');
               console.log(img[index])
-              
             }
-        
+            //barMove(10 , 30);    
         reader.readAsDataURL(file)                 
       }
-      
 
-    //Progress bar
+
+    //Progress bar   //
+      function handleWidth(width, oneUpload){ 
+        
+        width = width + oneUpload;
+        let moveBar  = document.getElementById('myBar');
+        moveBar.style.width = width     //width + oneUpload;
+        console.log(moveBar.style.width)
+      }
    
-    function handleWidth(){
-        oneUpload = 25;      
-        barMove(0 , oneUpload);
-      }
+    // function barMove(width, oneUpload){
+    //   var elem = document.getElementById('myBar');
+    //   var id =setInterval(frame,25);
+    //   function frame(){
+    //       if (width >= 100) {
+    //           clearInterval(id);      
+    //       }
+    //       else{    
+    //           width + oneUpload;
+    //           elem.style.width = width + '%';
+    //           document.getElementById("label").innerHTML = width*1 + '%';
+    //       }
+    //   }
+    // } 
 
-    function barMove(width, oneUpload){
-      var elem = document.getElementById('myBar');
-      var id =setInterval(frame,30);
-      function frame(){
-          if (width >= oneUpload) {
-              clearInterval(id);
-              width = width + oneUpload;     
-          }
-          else{    
-              width++;
-              elem.style.width = width + '%';
-              document.getElementById("label").innerHTML = width*1 + '%';
-          }
-      }
-    } 
-
-    
     // Drag images
 
 
