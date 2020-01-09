@@ -83,7 +83,7 @@ window.onload = function(){
               console.log(img[index])
               console.log('UPLOAD image');
             }   
-            
+
         reader.readAsDataURL(file)                 
       }
 
@@ -112,43 +112,54 @@ window.onload = function(){
       let dropListContainer = document.getElementsByClassName('file-container')
       console.log(dropListContainer)
 
-      // ;['dragenter', 'dragover'].forEach(eventName => {
-      //   dropArea.addEventListener(eventName, highlight, false)
-      // })
-
-                   
-      // dropListContainer.addEventListener(function(event){
-      //   this.style.borderColor = "red";
-      //   })
-      // })
       
+      
+      for(i = 0; i < dropListContainer.length; i++){
+          dropListContainerItem = dropListContainer[i]
+          
+          dropListContainerItem.addEventListener('dragstart', function(event){
+            this.style.position = "absolute";
+          })
+
+          dropListContainerItem.addEventListener('dragenter', function(event){
+            this.style.borderColor = "red";
+            console.log(dropListContainerItem)
+          })
+
+          dropListContainerItem.addEventListener('dragleave', function(event){
+            this.style.borderColor = 'grey';
+          })
+          
+
+      }
 
       //////////
 
-      let dropContainer = document.getElementById('drop-conrainer')
-      console.log(dropContainer)
-      let dragable = document.getElementById('drag-item')
+      // let dropContainer = document.getElementById('drop-conrainer')
+      // console.log(dropContainer)
+      // let dragable = document.getElementById('drag-item')
+      // console.log(dragable)
 
-      dropContainer.addEventListener('dragenter', function(event){
-        this.style.borderColor = "red";
-      })
+      // dropContainer.addEventListener('dragenter', function(event){
+      //   this.style.borderColor = "red";
+      // })
 
-      dropContainer.addEventListener('dragleave', function(event){
-        this.style.borderColor = 'grey';
-      })
+      // dropContainer.addEventListener('dragleave', function(event){
+      //   this.style.borderColor = 'grey';
+      // })
 
-      dropContainer.addEventListener('dragover', function(event){
-          event.preventDefault();
-      })
+      // dropContainer.addEventListener('dragover', function(event){
+      //     event.preventDefault();
+      // })
 
-      dropContainer.addEventListener('drop', function(event){
-        console.log(dropContainer)
-        if(dropContainer.contains(dragable)){
-          this.removeChild(dragable)
-        }
-        this.appendChild(dragable);
-        console.log(dragable)
-      })
+      // dropContainer.addEventListener('drop', function(event){
+      //   console.log(dropContainer)
+      //   if(dropContainer.contains(dragable)){
+      //     this.removeChild(dragable)
+      //   }
+      //   this.appendChild(dragable);
+      //   console.log(dragable)
+      // })
 
 }
 
