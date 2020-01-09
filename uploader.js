@@ -112,13 +112,14 @@ window.onload = function(){
       let dropListContainer = document.getElementsByClassName('file-container')
       console.log(dropListContainer)
 
-      
-      
+
+
       for(i = 0; i < dropListContainer.length; i++){
           dropListContainerItem = dropListContainer[i]
           
           dropListContainerItem.addEventListener('dragstart', function(event){
             this.style.position = "absolute";
+            this.classList.add('currentDragItem')
           })
 
           dropListContainerItem.addEventListener('dragenter', function(event){
@@ -128,6 +129,17 @@ window.onload = function(){
 
           dropListContainerItem.addEventListener('dragleave', function(event){
             this.style.borderColor = 'grey';
+          })
+
+          dropListContainerItem.addEventListener('dragover', function(event){
+            event.preventDefault();
+
+          })
+
+          dropListContainerItem.addEventListener('drop', function(event){
+
+            this.appendChild(dropListContainerItem);
+          
           })
           
 
