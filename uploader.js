@@ -82,8 +82,8 @@ window.onload = function(){
               handleWidth(widthSum, oneUpload)  
               console.log(img[index])
               console.log('UPLOAD image');
-            }
-            //barMove(10 , 30);    
+            }   
+            
         reader.readAsDataURL(file)                 
       }
 
@@ -109,13 +109,21 @@ window.onload = function(){
 
 
     // Drag images
-      // let dropListContainer = document.getElementsByClassName('file-container')
-      // console.log(dropListContainer)
+      let dropListContainer = document.getElementsByClassName('file-container')
+      console.log(dropListContainer)
 
-      // dropListContainer.forEach(addEventListener('dragenter', function(event){
+      // ;['dragenter', 'dragover'].forEach(eventName => {
+      //   dropArea.addEventListener(eventName, highlight, false)
+      // })
+
+                   
+      // dropListContainer.addEventListener(function(event){
       //   this.style.borderColor = "red";
-      // }))
-      // Object.addEventListener
+      //   })
+      // })
+      
+
+      //////////
 
       let dropContainer = document.getElementById('drop-conrainer')
       console.log(dropContainer)
