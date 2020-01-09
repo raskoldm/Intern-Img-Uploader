@@ -88,14 +88,14 @@ window.onload = function(){
       }
 
 
-    //Progress bar   //
+    //Progress bar   
 
       function handleWidth(width, oneUpload){ 
         width = width + oneUpload + '%';
         let moveBar  = document.getElementById('myBar');
-          if (width <= 100){
-          
+          if (width >= 100){
             console.log('ooooops')
+            
           }
           else{
             moveBar.style.width = width     //width + oneUpload;
@@ -109,22 +109,24 @@ window.onload = function(){
 
 
     // Drag images
+
       let dropListContainer = document.getElementsByClassName('file-container')
       console.log(dropListContainer)
 
 
-
       for(i = 0; i < dropListContainer.length; i++){
-          dropListContainerItem = dropListContainer[i]
-          
+        dropListContainerItem = dropListContainer[i]
+    
           dropListContainerItem.addEventListener('dragstart', function(event){
-            this.style.position = "absolute";
+            
             this.classList.add('currentDragItem')
+            console.log(dropListContainerItem)
+            console.log(event)
           })
 
           dropListContainerItem.addEventListener('dragenter', function(event){
             this.style.borderColor = "red";
-            console.log(dropListContainerItem)
+            console.log(event)
           })
 
           dropListContainerItem.addEventListener('dragleave', function(event){
@@ -137,13 +139,19 @@ window.onload = function(){
           })
 
           dropListContainerItem.addEventListener('drop', function(event){
-
-            this.appendChild(dropListContainerItem);
-          
+            let dropTarget = event.currentTarget
+            let parentBlock = dropTarget.parentNode
+            let currentDragItem = document.getElementsByClassName('currentDragItem')
+            console.log(currentDragItem)
+            console.log(dropTarget)
+            parentBlock.insertBefore(currentDragItem[0],dropTarget);
+            currentDragItem[0].classList.remove('currentDragItem')
+            console.log(event)
           })
           
-
       }
+        
+      
 
       //////////
 
