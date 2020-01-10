@@ -58,6 +58,7 @@ window.onload = function(){
       console.log(files)                                      //filelist
        for(let i = 0; i < files.length; i++) {
           let oneUpload = 100/files.length;
+          
           previewFile(files[i],i,oneUpload)
           
        }
@@ -74,8 +75,9 @@ window.onload = function(){
               let src = img[index].getAttribute('src');
               img[index].src = reader.result;
               img[index].setAttribute('display', 'block');
+              
               let widthSum = parseInt((document.getElementById('myBar').style.width));
-                if (isNaN(widthSum)) { widthSum = 0 }
+                if (isNaN(widthSum)){ widthSum = 0 }
          
               console.log(widthSum)
               
@@ -83,7 +85,7 @@ window.onload = function(){
               console.log(img[index])
               console.log('UPLOAD image');
             }   
-
+        
         reader.readAsDataURL(file)                 
       }
 
