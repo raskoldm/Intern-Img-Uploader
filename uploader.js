@@ -68,33 +68,37 @@ window.onload = function(){
 
     function previewFile(file, index, oneUpload) {
         console.log(file)
-        
+
         let reader = new FileReader()  
         reader.onloadend = function(e) {
-              let img = document.getElementsByClassName('img-container')
+              let img = document.getElementsByClassName('img-container');
               let src = img[index].getAttribute('src');
               img[index].src = reader.result;
               img[index].setAttribute('display', 'block');
               
               let widthSum = parseFloat((document.getElementById('myBar').style.width));
               if (isNaN(widthSum)){ widthSum = 0 }
-               
-
+              if (widthSum >= 99){
+                console.log('ooooops')
+                widthSum = 0;
+              }
+              
               console.log(widthSum)
               
-              handleWidth(widthSum, oneUpload)  
+              handleWidth(widthSum, oneUpload)
               console.log(img[index])
               console.log('UPLOAD image');
+
             }   
-        
+         
         reader.readAsDataURL(file)                 
       }
 
 
     //Progress bar   
 
-      function handleWidth(width, oneUpload){ 
-        oneUpload =  Math.round(oneUpload); 
+      function handleWidth(width, oneUpload){  
+        //oneUpload = Math.round(oneUpload)
         width = width + oneUpload + '%';
         let moveBar  = document.getElementById('myBar');
           if (width >= 100){
@@ -130,22 +134,20 @@ window.onload = function(){
 
           dropListContainerItem.addEventListener('dragenter', function(event){
             this.style.borderColor = "red";
-            
-            let dropTarget = event.currentTarget
-            dropTarget.style.width = '80px';
+          
 
             console.log(event)
           })
 
           dropListContainerItem.addEventListener('dragleave', function(event){
             this.style.borderColor = 'grey';
+          
             
-            let dropTarget = event.currentTarget
-            dropTarget.style.width = '100px';
           })
 
           dropListContainerItem.addEventListener('dragover', function(event){
             event.preventDefault();
+
 
           })
 
@@ -153,11 +155,11 @@ window.onload = function(){
             let dropTarget = event.currentTarget
             let parentBlock = dropTarget.parentNode
             let currentDragItem = document.getElementsByClassName('currentDragItem')
+            
             console.log(currentDragItem)
             console.log(dropTarget)
-            
-            dropTarget.style.width = '100px';
            
+
             parentBlock.insertBefore(currentDragItem[0],dropTarget);
             currentDragItem[0].classList.remove('currentDragItem')
             console.log(event)
