@@ -54,15 +54,32 @@ window.onload = function(){
       handleFiles(files)
     }
 
+
+    //Check empty
+    
+    // function checkEmpty(){
+    //   for(i = 0; i > checkEmpty; i++){
+    //   let checkEmpty = document.getElementsByClassName('file-container')
+        
+    //   }
+    //  }
+  
+    // checkEmpty();
+    
+
+    //Handlefiles
+
     function handleFiles(files) {   
       console.log(files)                                      //filelist
        for(let i = 0; i < files.length; i++) {
           let oneUpload = 100/files.length;
+
           
           previewFile(files[i],i,oneUpload)
           
        }
-    }   
+    }
+    
 
     //Read file
 
@@ -73,32 +90,37 @@ window.onload = function(){
         reader.onloadend = function(e) {
               let img = document.getElementsByClassName('img-container');
               let src = img[index].getAttribute('src');
+              //if(){
               img[index].src = reader.result;
-              img[index].setAttribute('display', 'block');
+              img[index].setAttribute('display', 'block'); 
               
               let widthSum = parseFloat((document.getElementById('myBar').style.width));
               if (isNaN(widthSum)){ widthSum = 0 }
               if (widthSum >= 99){
                 console.log('ooooops')
-                widthSum = 0;
+                widthSum = 0; 
               }
+
+              
               
               console.log(widthSum)
               
-              handleWidth(widthSum, oneUpload)
+              handleWidth(Math.round(widthSum), oneUpload)
+              
               console.log(img[index])
               console.log('UPLOAD image');
 
-            }   
-         
-        reader.readAsDataURL(file)                 
+            //} 
+          }   
+
+          reader.readAsDataURL(file)                 
       }
 
 
     //Progress bar   
 
       function handleWidth(width, oneUpload){  
-        //oneUpload = Math.round(oneUpload)
+        
         width = width + oneUpload + '%';
         let moveBar  = document.getElementById('myBar');
           if (width >= 100){
