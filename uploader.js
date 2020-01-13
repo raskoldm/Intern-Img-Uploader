@@ -1,5 +1,6 @@
 window.onload = function(){
 
+
     let dropArea = document.getElementById('drop-area')
     let inpFile = document.getElementById('inpFile');
 
@@ -55,30 +56,42 @@ window.onload = function(){
     }
 
 
-    //Check empty
-    
-    // function checkEmpty(){
-    //   for(i = 0; i > checkEmpty; i++){
-    //   let checkEmpty = document.getElementsByClassName('file-container')
-        
-    //   }
-    //  }
-  
-    // checkEmpty();
-    
 
     //Handlefiles
 
     function handleFiles(files) {   
-      console.log(files)                                      //filelist
-       for(let i = 0; i < files.length; i++) {
-          let oneUpload = 100/files.length;
-
+      console.log(files)
+      let imgCheck = document.getElementsByClassName('img-container'); 
+     
+        
+        for(let i = 0; i < files.length; i++) {
+        let oneUpload = 100/files.length;
+        
+        
           
-          previewFile(files[i],i,oneUpload)
-          
-       }
+            
+            previewFile(files[i],i,oneUpload)
+            console.log(i)
+          }
+       
     }
+
+    //Check empty
+  
+    function checkEmpty(){
+      let imgCheck = document.getElementsByClassName('file-container'); 
+          
+      
+        for(i = 0; i < imgCheck.length; i++){
+          if(imgCheck[i].firstChild.src = "unknown"){
+          imgCheck[i].style.borderColor = "red";  
+          }
+          
+        }
+      }
+      
+        
+  
     
 
     //Read file
@@ -90,19 +103,19 @@ window.onload = function(){
         reader.onloadend = function(e) {
               let img = document.getElementsByClassName('img-container');
               let src = img[index].getAttribute('src');
-              //if(){
+              console.log(img[index])
+              //if(src = "unknown"){
               img[index].src = reader.result;
               img[index].setAttribute('display', 'block'); 
               
               let widthSum = parseFloat((document.getElementById('myBar').style.width));
               if (isNaN(widthSum)){ widthSum = 0 }
-              if (widthSum >= 99){
+              if (widthSum >= 98){
                 console.log('ooooops')
                 widthSum = 0; 
               }
 
-              
-              
+
               console.log(widthSum)
               
               handleWidth(Math.round(widthSum), oneUpload)
@@ -112,7 +125,7 @@ window.onload = function(){
 
             //} 
           }   
-
+          checkEmpty();
           reader.readAsDataURL(file)                 
       }
 
@@ -141,7 +154,7 @@ window.onload = function(){
     // Drag images
 
       let dropListContainer = document.getElementsByClassName('file-container')
-      console.log(dropListContainer)
+      
 
 
       for(i = 0; i < dropListContainer.length; i++){
@@ -189,35 +202,6 @@ window.onload = function(){
           
       }
         
-      
-
-      //////////
-
-      // let dropContainer = document.getElementById('drop-conrainer')
-      // console.log(dropContainer)
-      // let dragable = document.getElementById('drag-item')
-      // console.log(dragable)
-
-      // dropContainer.addEventListener('dragenter', function(event){
-      //   this.style.borderColor = "red";
-      // })
-
-      // dropContainer.addEventListener('dragleave', function(event){
-      //   this.style.borderColor = 'grey';
-      // })
-
-      // dropContainer.addEventListener('dragover', function(event){
-      //     event.preventDefault();
-      // })
-
-      // dropContainer.addEventListener('drop', function(event){
-      //   console.log(dropContainer)
-      //   if(dropContainer.contains(dragable)){
-      //     this.removeChild(dragable)
-      //   }
-      //   this.appendChild(dragable);
-      //   console.log(dragable)
-      // })
 
 }
 
